@@ -33,6 +33,11 @@ variable "jenkins_image" {
   default     = "jenkins/jenkins:latest"
 }
 
+variable "service_type" {
+  description = "service type"
+  default     = "ClusterIP"
+}
+
 variable "replicas" {
   description = "no. of replicas you want"
   default     = "1"

@@ -117,7 +117,7 @@ resource "kubernetes_service" "jenkins-service" {
       name = "tunnel"
     }
 
-    type = "ClusterIP"
+    type = var.service_type
   }
 }
 
