@@ -65,6 +65,9 @@ resource "kubernetes_deployment" "jenkins" {
       }
 
       spec {
+        service_account_name = kubernetes_service_account.this.metadata.0.name
+        automount_service_account_token = true
+
         container {
           image = var.jenkins_image
           name  = var.name
@@ -140,7 +143,7 @@ resource "kubernetes_service" "jenkins-service" {
 #   type = "kubernetes.io/service-account-token"
 # }
 
-resource "kubernetes_service_account" "thia" {
+resource "kubernetes_service_account" "this" {
   metadata {
     name      = "${var.name}-admin"
     namespace = var.namespace
