@@ -75,6 +75,14 @@ resource "kubernetes_deployment" "jenkins" {
             name       = "${var.name}-persistent-storage"
             mount_path = "/var/jenkins_home"
           }
+          dynamic "resources" {
+            for_each = var.request_memory != "" ? ["true"] : []
+            content {
+              requests {
+                memory = var.request_memory
+              }
+            }
+          }
           #   TODO: liveness probe
         }
         security_context {

@@ -38,6 +38,11 @@ variable "service_type" {
   default     = "ClusterIP"
 }
 
+variable "request_memory" {
+  description = "memory request for the jenkins container"
+  default = ""
+}
+
 variable "replicas" {
   description = "no. of replicas you want"
   default     = "1"
