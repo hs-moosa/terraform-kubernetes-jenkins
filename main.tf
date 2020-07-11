@@ -151,16 +151,15 @@ resource "kubernetes_service" "jenkins-service" {
   }
 }
 
-# resource "kubernetes_secret" "this" {
-#   metadata {
-#     name = "${var.name}-admin"
-#     annotations = {
-#       "kubernetes.io/service-account.name" = "${var.name}-admin"
-#     }
-#   }
-
-#   type = "kubernetes.io/service-account-token"
-# }
+//resource "kubernetes_secret" "this" {
+//  metadata {
+//    name = "${var.name}-admin"
+//    annotations = {
+//      "kubernetes.io/service-account.name" = "${var.name}-admin"
+//    }
+//  }
+//  type = "kubernetes.io/service-account-token"
+//}
 
 resource "kubernetes_service_account" "this" {
   metadata {
