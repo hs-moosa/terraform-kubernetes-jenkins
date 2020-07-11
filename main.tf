@@ -68,6 +68,25 @@ resource "kubernetes_deployment" "jenkins" {
         service_account_name = kubernetes_service_account.this.metadata.0.name
         automount_service_account_token = true
 
+        dynamic "affinity" {
+          for_each = var.availability_zone != "" ? ["true"] : []
+          content {
+            node_affinity {
+              required_during_scheduling_ignored_during_execution {
+                node_selector_term {
+                  match_expressions {
+                    key = "failure-domain.beta.kubernetes.io/zone"
+                    operator = "In"
+                    values = [
+                      var.availability_zone
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+
         container {
           image = var.jenkins_image
           name  = var.name

@@ -47,3 +47,9 @@ variable "replicas" {
   description = "no. of replicas you want"
   default     = "1"
 }
+
+variable "availability_zone" {
+  type = string
+  description = "availability zone if needed"
+  default = ""
+}
