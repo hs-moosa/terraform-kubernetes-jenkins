@@ -51,6 +51,10 @@ resource "kubernetes_deployment" "jenkins" {
   spec {
     replicas = var.replicas
 
+    strategy {
+      type = var.strategy
+    }
+
     selector {
       match_labels = {
         app = var.name

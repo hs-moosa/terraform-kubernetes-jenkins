@@ -18,6 +18,11 @@ variable "namespace" {
   default     = "jenkins"
 }
 
+variable "strategy" {
+  description = "deployment strategy"
+  default     = "RollingUpdate"
+}
+
 variable "storageclass" {
   description = "storageclass to use for creating persistent volume claim, defaults to gp2 of AWS"
   default     = "gp2"
