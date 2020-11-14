@@ -120,6 +120,8 @@ resource "kubernetes_deployment" "jenkins" {
             claim_name = "${var.name}-claim"
           }
         }
+
+        node_selector = var.kubernetes_deployment_node_selector
       }
     }
   }
