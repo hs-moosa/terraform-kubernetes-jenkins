@@ -58,3 +58,11 @@ variable "availability_zone" {
   description = "availability zone if needed"
   default = ""
 }
+
+variable "kubernetes_deployment_node_selector" {
+  type = map(string)
+  default = {
+    "beta.kubernetes.io/os" = "linux"
+  }
+  description = "Node selectors for kubernetes deployment"
+}
